@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "Shubham Bhosale | Product Manager | B2B SaaS";
 const DESCRIPTION =
-  "Product Manager focused on adoption, activation, and integration-led growth across B2B SaaS.";
+  "Product Manager focused on adoption, activation, and product-led growth across B2B SaaS.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bhosalepatil.vercel.app"),

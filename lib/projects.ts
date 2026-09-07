@@ -498,6 +498,13 @@ export const PROJECTS: Project[] = [
       outcome:
         "Cut integration-related support tickets and clarifications by 60%.",
     },
+    screens: [
+      {
+        name: "Developer Portal",
+        url: "https://developer.spotdraft.com/",
+        image: "/images/screens/spotdraft-developer-portal.jpg",
+      },
+    ],
   },
   {
     slug: "ozonetel-truecaller-compliance",
