@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 
 const SENTENCE =
-  "BTech graduate from GCEK Karad. Built two startups from scratch. Three years shipping product ever since.";
+  "Started building things in college and never stopped. Two startups, 3+ years as a product manager and a habit of going deep on customer problems. I care about shipping outcomes, not features.";
 
 function Word({
   children,
