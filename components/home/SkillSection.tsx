@@ -1,14 +1,13 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import type { LoopStage } from "@/lib/projects";
 import { getProjectsByStage, getStageMeta } from "@/lib/projects";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ProjectCard } from "@/components/home/ProjectCard";
 
 const EDGE_PAD = "max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))";
-const NAV_HEIGHT = "4rem";
 
 export function SkillSection({ stage }: { stage: LoopStage }) {
   const meta = getStageMeta(stage);
@@ -33,8 +32,13 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
-  const x = useTransform(scrollYProgress, [0, 1], [0, -distance]);
-  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    mass: 0.5,
+  });
+  const x = useTransform(smoothProgress, [0, 1], [0, -distance]);
+  const progressWidth = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
   const pinned = distance > 0;
 
@@ -43,15 +47,15 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
       id={stage}
       ref={sectionRef}
       className="relative border-t border-border"
-      style={pinned ? { height: `calc(100svh - ${NAV_HEIGHT} + ${distance}px)` } : undefined}
+      style={pinned ? { height: `calc(100svh - var(--header-h) + ${distance}px)` } : undefined}
     >
       <div
         className={
           pinned
-            ? "sticky flex h-[calc(100svh-4rem)] flex-col overflow-hidden py-12"
+            ? "sticky flex h-[calc(100svh-var(--header-h))] flex-col overflow-hidden py-12"
             : "flex flex-col py-24 sm:py-32"
         }
-        style={pinned ? { top: NAV_HEIGHT } : undefined}
+        style={pinned ? { top: "var(--header-h)" } : undefined}
       >
         <div className="mx-auto w-full max-w-[1200px] px-6">
           <SectionLabel
@@ -67,7 +71,13 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
           )}
         </div>
 
-        <div className={pinned ? "flex flex-1 items-center overflow-hidden" : "overflow-x-auto overflow-y-hidden pb-2"}>
+        <div
+          className={
+            pinned
+              ? "flex flex-1 items-center overflow-hidden"
+              : "no-scrollbar overflow-x-auto overflow-y-hidden pb-2"
+          }
+        >
           <motion.div
             ref={trackRef}
             style={pinned ? { x, paddingLeft: EDGE_PAD } : { paddingLeft: EDGE_PAD }}

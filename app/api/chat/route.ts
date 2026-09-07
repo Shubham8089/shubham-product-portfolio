@@ -1,5 +1,5 @@
-import Anthropic from "@anthropic-ai/sdk";
-import { CHAT_MODEL, SYSTEM_PROMPT, buildPortfolioContext } from "@/lib/anthropic";
+import { GoogleGenAI } from "@google/genai";
+import { CHAT_MODEL, SYSTEM_PROMPT, buildPortfolioContext } from "@/lib/gemini";
 
 export const runtime = "nodejs";
 
@@ -18,42 +18,39 @@ export async function POST(request: Request) {
     return new Response("Missing message", { status: 400 });
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
     return new Response(
-      "The chat assistant isn't configured yet. Set ANTHROPIC_API_KEY to enable it.",
+      "The chat assistant isn't configured yet. Set GEMINI_API_KEY to enable it.",
       { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } }
     );
   }
 
-  const client = new Anthropic();
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const context = buildPortfolioContext();
 
-  const messages: Anthropic.MessageParam[] = [
-    ...(history ?? []).slice(-8).map((m) => ({ role: m.role, content: m.content })),
-    { role: "user" as const, content: message },
+  const contents = [
+    ...(history ?? []).slice(-8).map((m) => ({
+      role: m.role === "assistant" ? ("model" as const) : ("user" as const),
+      parts: [{ text: m.content }],
+    })),
+    { role: "user" as const, parts: [{ text: message }] },
   ];
-
-  const stream = client.messages.stream({
-    model: CHAT_MODEL,
-    max_tokens: 1024,
-    system: [
-      {
-        type: "text",
-        text: `${SYSTEM_PROMPT}\n\n# Portfolio context\n${context}`,
-        cache_control: { type: "ephemeral" },
-      },
-    ],
-    output_config: { effort: "low" },
-    messages,
-  });
 
   const encoder = new TextEncoder();
   const readable = new ReadableStream<Uint8Array>({
     async start(controller) {
       try {
-        for await (const event of stream) {
-          if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-            controller.enqueue(encoder.encode(event.delta.text));
+        const stream = await ai.models.generateContentStream({
+          model: CHAT_MODEL,
+          contents,
+          config: {
+            systemInstruction: `${SYSTEM_PROMPT}\n\n# Portfolio context\n${context}`,
+            maxOutputTokens: 1024,
+          },
+        });
+        for await (const chunk of stream) {
+          if (chunk.text) {
+            controller.enqueue(encoder.encode(chunk.text));
           }
         }
       } catch (err) {

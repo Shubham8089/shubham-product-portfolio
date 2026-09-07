@@ -82,6 +82,7 @@ export const PROJECTS: Project[] = [
     categories: ["AI", "B2B"],
     tags: ["CCaaS", "AI"],
     oneLiner: "Landscape study of AI agent-assist tooling across contact center platforms.",
+    image: "/images/projects/agent-assist-market-research.jpg",
   },
   {
     slug: "route-optimisation-market-research",
@@ -90,6 +91,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["Logistics"],
     oneLiner: "Competitive scan of route optimisation players serving logistics fleets.",
+    image: "/images/projects/route-optimisation-market-research.jpg",
   },
   {
     slug: "eka-care-teardown",
@@ -98,6 +100,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Healthcare"],
     oneLiner: "Product teardown of eka.care's consumer health record and booking flows.",
+    image: "/images/projects/eka-care-teardown.jpg",
   },
   {
     slug: "canva-teardown",
@@ -106,7 +109,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Design"],
     oneLiner: "Breaking down Canva's onboarding and template-led activation loop.",
-    image: "/images/projects/canva-teardown.png",
+    image: "/images/projects/canva-teardown.jpg",
   },
   {
     slug: "spotify-revenue-streams",
@@ -115,6 +118,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Monetisation"],
     oneLiner: "Mapping how Spotify monetises across free, premium, and label economics.",
+    image: "/images/projects/spotify-revenue-streams.jpg",
   },
   {
     slug: "youtube-music-teardown",
@@ -123,6 +127,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Media"],
     oneLiner: "Feature and positioning teardown of YouTube Music against category leaders.",
+    image: "/images/projects/youtube-music-teardown.jpg",
   },
   {
     slug: "ambitionbox-teardown",
@@ -131,6 +136,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Jobs"],
     oneLiner: "Content and trust-loop teardown of AmbitionBox's review-led acquisition.",
+    image: "/images/projects/ambitionbox-teardown.jpg",
   },
   {
     slug: "fluvid-teardown",
@@ -139,6 +145,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Video"],
     oneLiner: "Early-stage product teardown of Fluvid's core video workflow.",
+    image: "/images/projects/fluvid-teardown.jpg",
   },
   {
     slug: "nxtwave-teardown",
@@ -147,6 +154,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["EdTech"],
     oneLiner: "Funnel and cohort-based teardown of NxtWave's edtech acquisition engine.",
+    image: "/images/projects/nxtwave-teardown.jpg",
   },
   {
     slug: "odoo-teardown",
@@ -155,6 +163,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["ERP"],
     oneLiner: "Modular architecture and pricing teardown of Odoo's ERP suite.",
+    image: "/images/projects/odoo-teardown.jpg",
   },
 
   // Strategy
@@ -165,6 +174,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Hyperlocal"],
     oneLiner: "Acquisition strategy for a hyperlocal consumer product, built during GrowthX.",
+    image: "/images/projects/growthx-acquisition.jpg",
   },
   {
     slug: "growthx-monetisation",
@@ -173,6 +183,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Pricing"],
     oneLiner: "Monetisation model design for a consumer product with mixed willingness to pay.",
+    image: "/images/projects/growthx-monetisation.jpg",
   },
   {
     slug: "grocero-gtm",
@@ -181,6 +192,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["GTM"],
     oneLiner: "Go-to-market plan for a grocery delivery launch, sequencing channels and city rollout.",
+    image: "/images/projects/grocero-gtm.jpg",
   },
   {
     slug: "getgrocery",
@@ -189,6 +201,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Hyperlocal"],
     oneLiner: "Strategy work on hyperlocal grocery positioning and supply-side incentives.",
+    image: "/images/projects/getgrocery.jpg",
   },
 
   // Build
@@ -200,7 +213,7 @@ export const PROJECTS: Project[] = [
     tags: ["DPDP", "Compliance"],
     oneLiner: "A production DPDP compliance platform: consent, trust center, DSAR, and vendor risk.",
     liveUrl: "https://dpdp-prod.vercel.app",
-    image: "/images/projects/sentinel.png",
+    image: "/images/projects/sentinel.jpg",
     content: {
       context:
         "India's DPDP Act introduced new obligations for consent management, data subject requests, and vendor risk that most SaaS companies have no tooling for.",
@@ -220,6 +233,7 @@ export const PROJECTS: Project[] = [
     tags: ["PRM"],
     oneLiner: "A partner relationship management platform built for B2B SaaS companies.",
     liveUrl: "https://intlus.vercel.app",
+    image: "/images/projects/intlus.jpg",
     content: {
       context:
         "B2B SaaS companies running partner programs typically stitch together a CRM, a ticketing tool, and a spreadsheet for commissions, with no single view of partner health.",
@@ -241,6 +255,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://networkventure.wixsite.com/gcekforum",
     role: "Founder",
     metric: "1,500+ active users",
+    image: "/images/projects/syncing-gcek.jpg",
     content: {
       context:
         "Government College of Engineering Karad had no structured way for alumni and current students to connect for mentorship, referrals, or events.",
@@ -262,6 +277,7 @@ export const PROJECTS: Project[] = [
     role: "Co-founder",
     metric: "₹15L revenue",
     liveUrl: "https://networkventure.wixsite.com/one-media",
+    image: "/images/projects/official-network-enterprise.jpg",
     content: {
       context:
         "Started while at university as a way to apply product and design skills to real client problems across hospitality, healthcare, retail, and education.",
@@ -307,6 +323,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["Logistics", "PRD"],
     oneLiner: "A PRD for a feedback portal surfacing shipment tracking issues to logistics ops.",
+    image: "/images/projects/feedback-portal-logistics.jpg",
   },
   {
     slug: "mydoctor",
@@ -315,6 +332,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Healthcare"],
     oneLiner: "A consumer product concept for finding and booking doctors.",
+    image: "/images/projects/mydoctor.jpg",
   },
   {
     slug: "healme",
@@ -323,6 +341,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Healthcare"],
     oneLiner: "A consumer healthcare product concept focused on guided self-care.",
+    image: "/images/projects/healme.jpg",
   },
 
   // Growth
@@ -333,6 +352,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["Onboarding"],
     oneLiner: "Onboarding redesign work for a B2B product, focused on time to first value.",
+    image: "/images/projects/growthx-onboarding.jpg",
   },
   {
     slug: "growthx-engagement-retention",
@@ -341,6 +361,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Retention"],
     oneLiner: "Engagement and retention loops designed for a consumer product cohort.",
+    image: "/images/projects/growthx-engagement-retention.jpg",
   },
   {
     slug: "ozonetel-acw",
@@ -349,6 +370,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B", "AI"],
     tags: ["CCaaS"],
     oneLiner: "AI-generated call notes that cut agent wrap time from ~60s to 10-20s.",
+    image: "/images/projects/ozonetel-acw.jpg",
     content: {
       context:
         "Ozonetel's OneCXi CCaaS platform serves large contact centers including HDFC, BigBasket, Star Health, and DishTV, where every second of agent wrap time compounds across thousands of calls a day.",
@@ -367,6 +389,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["CCaaS"],
     oneLiner: "Launched Ozonetel's digital channel portfolio from scratch, growing licenses 25%.",
+    image: "/images/projects/ozonetel-digital-channels.jpg",
     content: {
       context:
         "OneCXi had strong voice capabilities but no structured digital channel offering for omnichannel interactions.",
@@ -387,7 +410,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["CLM", "Integrations"],
     oneLiner: "Owning SpotDraft's integrations portfolio as sole PM, contributing ~$290K in ARR.",
-    image: "/images/projects/spotdraft-integrations.png",
+    image: "/images/projects/spotdraft-integrations.jpg",
     content: {
       context:
         "SpotDraft is a contract lifecycle management platform where legal, procurement, and security stakeholders expect contracts to sync cleanly with the systems they already run: CRM, P2P, HRIS, and cloud storage.",
@@ -406,6 +429,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["Developer Experience"],
     oneLiner: "Built and maintain a self-serve developer portal, cutting support tickets 60%.",
+    image: "/images/projects/spotdraft-developer-portal.jpg",
     content: {
       context:
         "Customers building custom integrations against SpotDraft's API had no self-serve documentation, so every integration question routed through support.",
@@ -424,6 +448,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["Compliance"],
     oneLiner: "Integrated Truecaller for call-pickup probability and owned the compliance workstream.",
+    image: "/images/projects/ozonetel-truecaller-compliance.jpg",
     content: {
       context:
         "OneCXi operates across geographies with strict calling regulations, including TRAI/DND rules in India and calling restrictions in the US.",

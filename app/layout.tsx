@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { Navbar } from "@/components/layout/Navbar";
+import { Sidebar } from "@/components/layout/Sidebar";
 import { Footer } from "@/components/layout/Footer";
 import { ChatBar } from "@/components/chat/ChatBar";
 
@@ -31,9 +31,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="flex min-h-screen flex-col bg-bg text-text">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <Sidebar />
+          <div className="flex flex-1 flex-col pt-[var(--header-h)] lg:pl-[88px]">
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
           <ChatBar />
         </ThemeProvider>
       </body>

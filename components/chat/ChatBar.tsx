@@ -72,12 +72,12 @@ export function ChatBar() {
           {open && (
             <motion.div
               initial={{ opacity: 0, height: 0, y: 12 }}
-              animate={{ opacity: 1, height: 400, y: 0 }}
+              animate={{ opacity: 1, height: "min(400px, 60dvh)", y: 0 }}
               exit={{ opacity: 0, height: 0, y: 12 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-2 overflow-hidden rounded-2xl border border-border bg-surface/95 shadow-[var(--shadow-card)] backdrop-blur-md"
+              className="mb-2 flex max-h-[60dvh] flex-col overflow-hidden rounded-2xl border border-border bg-surface/95 shadow-[var(--shadow-card)] backdrop-blur-md"
             >
-              <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
+              <div className="flex shrink-0 items-center justify-between border-b border-border px-4 py-2.5">
                 <p className="font-mono text-[10px] uppercase tracking-widest text-text-faint">
                   Ask my work
                 </p>
@@ -90,7 +90,7 @@ export function ChatBar() {
                   <X size={15} />
                 </button>
               </div>
-              <div className="h-[calc(400px-42px)] px-3">
+              <div className="min-h-0 flex-1 px-3">
                 <ChatPanel messages={messages} isStreaming={isStreaming} />
               </div>
             </motion.div>
