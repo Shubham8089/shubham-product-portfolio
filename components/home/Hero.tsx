@@ -127,7 +127,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-md text-balance text-lg text-text-muted sm:text-xl"
           >
-            Builder. Integration-obsessed. I ship products that plug into the systems people already use.
+            Builder. Outcome-driven. I go deep on customer problems and ship what actually moves the needle.
           </motion.p>
 
           <motion.p
