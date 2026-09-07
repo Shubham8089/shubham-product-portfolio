@@ -9,8 +9,8 @@ const EXPERIENCE = [
     period: "Feb 2026 - Present",
     location: "Contract Lifecycle Management (B2B SaaS), Bengaluru",
     bullets: [
-      "Owned SpotDraft's full integrations portfolio as Integrations PM: 80+ out-of-the-box connectors across CRM, P2P, HRIS, and cloud storage (Google Drive, SharePoint, Dropbox, Box, Egnyte, OneDrive) syncing 50K+ documents, with a 100% attach rate across ~800 customers.",
-      "Ran 100+ customer scoping calls with sales, procurement, security, and legal GC/CLO stakeholders across NAM, EU, and APAC, contributing ~$290K in integration ARR ($170K via API access and $120K via custom builds).",
+      "Owned SpotDraft's full integrations portfolio as Integrations PM: 80+ out-of-the-box connectors across CRM, P2P, HRIS, and cloud storage (Google Drive, SharePoint, Dropbox, Box, Egnyte, OneDrive) syncing 50K+ documents.",
+      "Ran 100+ customer scoping calls with sales, procurement, security, and legal GC/CLO stakeholders across NAM, EU, and APAC, enabling $200K in integration ARR.",
       "Built and maintained a public developer portal with self-serve onboarding and documentation, cutting integration-related support tickets and clarifications by 60%.",
     ],
   },

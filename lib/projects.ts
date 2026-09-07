@@ -66,11 +66,15 @@ export interface Project {
   liveUrl?: string;
   /** Card thumbnail and case study hero image. 1200x675 (16:9), jpg/png/webp. Falls back to a generated gradient when absent. */
   image?: string;
+  /** Path to a PDF under /public rendered inline via the case study's PDF viewer. */
+  pdfUrl?: string;
   content?: CaseStudyContent;
   /** Founder-track ventures only: the single proof metric shown in the Startups section. */
   metric?: string;
   role?: string;
   clients?: { name: string; url: string; image: string }[];
+  /** Screenshots of the live product itself (not third-party client sites). */
+  screens?: { name: string; url: string; image: string }[];
 }
 
 export const PROJECTS: Project[] = [
@@ -83,6 +87,7 @@ export const PROJECTS: Project[] = [
     tags: ["CCaaS", "AI"],
     oneLiner: "Landscape study of AI agent-assist tooling across contact center platforms.",
     image: "/images/projects/agent-assist-market-research.jpg",
+    pdfUrl: "/documents/agent-assist-market-research.pdf",
   },
   {
     slug: "route-optimisation-market-research",
@@ -92,6 +97,7 @@ export const PROJECTS: Project[] = [
     tags: ["Logistics"],
     oneLiner: "Competitive scan of route optimisation players serving logistics fleets.",
     image: "/images/projects/route-optimisation-market-research.jpg",
+    pdfUrl: "/documents/route-optimisation-market-research.pdf",
   },
   {
     slug: "eka-care-teardown",
@@ -101,6 +107,7 @@ export const PROJECTS: Project[] = [
     tags: ["Healthcare"],
     oneLiner: "Product teardown of eka.care's consumer health record and booking flows.",
     image: "/images/projects/eka-care-teardown.jpg",
+    pdfUrl: "/documents/eka-care-teardown.pdf",
   },
   {
     slug: "canva-teardown",
@@ -110,6 +117,7 @@ export const PROJECTS: Project[] = [
     tags: ["Design"],
     oneLiner: "Breaking down Canva's onboarding and template-led activation loop.",
     image: "/images/projects/canva-teardown.jpg",
+    pdfUrl: "/documents/canva-teardown.pdf",
   },
   {
     slug: "spotify-revenue-streams",
@@ -119,6 +127,7 @@ export const PROJECTS: Project[] = [
     tags: ["Monetisation"],
     oneLiner: "Mapping how Spotify monetises across free, premium, and label economics.",
     image: "/images/projects/spotify-revenue-streams.jpg",
+    pdfUrl: "/documents/spotify-revenue-streams.pdf",
   },
   {
     slug: "youtube-music-teardown",
@@ -128,6 +137,7 @@ export const PROJECTS: Project[] = [
     tags: ["Media"],
     oneLiner: "Feature and positioning teardown of YouTube Music against category leaders.",
     image: "/images/projects/youtube-music-teardown.jpg",
+    pdfUrl: "/documents/youtube-music-teardown.pdf",
   },
   {
     slug: "ambitionbox-teardown",
@@ -137,6 +147,7 @@ export const PROJECTS: Project[] = [
     tags: ["Jobs"],
     oneLiner: "Content and trust-loop teardown of AmbitionBox's review-led acquisition.",
     image: "/images/projects/ambitionbox-teardown.jpg",
+    pdfUrl: "/documents/ambitionbox-teardown.pdf",
   },
   {
     slug: "fluvid-teardown",
@@ -146,6 +157,7 @@ export const PROJECTS: Project[] = [
     tags: ["Video"],
     oneLiner: "Early-stage product teardown of Fluvid's core video workflow.",
     image: "/images/projects/fluvid-teardown.jpg",
+    pdfUrl: "/documents/fluvid-teardown.pdf",
   },
   {
     slug: "nxtwave-teardown",
@@ -155,6 +167,7 @@ export const PROJECTS: Project[] = [
     tags: ["EdTech"],
     oneLiner: "Funnel and cohort-based teardown of NxtWave's edtech acquisition engine.",
     image: "/images/projects/nxtwave-teardown.jpg",
+    pdfUrl: "/documents/nxtwave-teardown.pdf",
   },
   {
     slug: "odoo-teardown",
@@ -164,6 +177,7 @@ export const PROJECTS: Project[] = [
     tags: ["ERP"],
     oneLiner: "Modular architecture and pricing teardown of Odoo's ERP suite.",
     image: "/images/projects/odoo-teardown.jpg",
+    pdfUrl: "/documents/odoo-teardown.pdf",
   },
 
   // Strategy
@@ -175,6 +189,7 @@ export const PROJECTS: Project[] = [
     tags: ["Hyperlocal"],
     oneLiner: "Acquisition strategy for a hyperlocal consumer product, built during GrowthX.",
     image: "/images/projects/growthx-acquisition.jpg",
+    externalUrl: "https://community.growthx.club/public/proof-of-work/67910d311994f13fe9cb635b",
   },
   {
     slug: "growthx-monetisation",
@@ -184,6 +199,7 @@ export const PROJECTS: Project[] = [
     tags: ["Pricing"],
     oneLiner: "Monetisation model design for a consumer product with mixed willingness to pay.",
     image: "/images/projects/growthx-monetisation.jpg",
+    externalUrl: "https://community.growthx.club/public/proof-of-work/67af085e7e7a4add82be570f",
   },
   {
     slug: "grocero-gtm",
@@ -193,6 +209,7 @@ export const PROJECTS: Project[] = [
     tags: ["GTM"],
     oneLiner: "Go-to-market plan for a grocery delivery launch, sequencing channels and city rollout.",
     image: "/images/projects/grocero-gtm.jpg",
+    pdfUrl: "/documents/grocero-gtm.pdf",
   },
   {
     slug: "getgrocery",
@@ -202,6 +219,7 @@ export const PROJECTS: Project[] = [
     tags: ["Hyperlocal"],
     oneLiner: "Strategy work on hyperlocal grocery positioning and supply-side incentives.",
     image: "/images/projects/getgrocery.jpg",
+    pdfUrl: "/documents/getgrocery.pdf",
   },
 
   // Build
@@ -224,6 +242,23 @@ export const PROJECTS: Project[] = [
       outcome:
         "Live and in active use today, covering the core DPDP compliance surface area: consent capture, trust center, DSAR workflow, and vendor risk tracking.",
     },
+    screens: [
+      {
+        name: "Product Overview",
+        url: "https://dpdp-prod.vercel.app",
+        image: "/images/screens/sentinel-overview.jpg",
+      },
+      {
+        name: "Trust Center (Customer)",
+        url: "https://dpdp-prod.vercel.app/portal/trust",
+        image: "/images/screens/sentinel-trust-center.jpg",
+      },
+      {
+        name: "Compliance Dashboard (Admin)",
+        url: "https://dpdp-prod.vercel.app/app/dashboard",
+        image: "/images/screens/sentinel-admin-dashboard.jpg",
+      },
+    ],
   },
   {
     slug: "intlus",
@@ -244,6 +279,18 @@ export const PROJECTS: Project[] = [
       outcome:
         "Live today, consolidating a partner workflow that would otherwise span three or four disconnected tools into one product.",
     },
+    screens: [
+      {
+        name: "Marketing Site",
+        url: "https://intlus.vercel.app",
+        image: "/images/screens/intlus-website.jpg",
+      },
+      {
+        name: "Partner Dashboard",
+        url: "https://intlus.vercel.app",
+        image: "/images/screens/intlus-admin.jpg",
+      },
+    ],
   },
   {
     slug: "syncing-gcek",
@@ -266,6 +313,13 @@ export const PROJECTS: Project[] = [
       outcome:
         "Officially recognized and endorsed by the college as its community platform, not just a student side project. Sustained active usage rather than a one-time signup spike: the Alumni Connect Series gave people a recurring reason to return, scaling to 1,500+ users and 5,000+ visits.",
     },
+    screens: [
+      {
+        name: "Syncing.GCEK",
+        url: "https://networkventure.wixsite.com/gcekforum",
+        image: "/images/screens/syncing-gcek-home.jpg",
+      },
+    ],
   },
   {
     slug: "official-network-enterprise",
@@ -324,6 +378,7 @@ export const PROJECTS: Project[] = [
     tags: ["Logistics", "PRD"],
     oneLiner: "A PRD for a feedback portal surfacing shipment tracking issues to logistics ops.",
     image: "/images/projects/feedback-portal-logistics.jpg",
+    pdfUrl: "/documents/feedback-portal-logistics.pdf",
   },
   {
     slug: "mydoctor",
@@ -333,6 +388,7 @@ export const PROJECTS: Project[] = [
     tags: ["Healthcare"],
     oneLiner: "A consumer product concept for finding and booking doctors.",
     image: "/images/projects/mydoctor.jpg",
+    pdfUrl: "/documents/mydoctor.pdf",
   },
   {
     slug: "healme",
@@ -342,6 +398,7 @@ export const PROJECTS: Project[] = [
     tags: ["Healthcare"],
     oneLiner: "A consumer healthcare product concept focused on guided self-care.",
     image: "/images/projects/healme.jpg",
+    pdfUrl: "/documents/healme.pdf",
   },
 
   // Growth
@@ -353,6 +410,7 @@ export const PROJECTS: Project[] = [
     tags: ["Onboarding"],
     oneLiner: "Onboarding redesign work for a B2B product, focused on time to first value.",
     image: "/images/projects/growthx-onboarding.jpg",
+    externalUrl: "https://community.growthx.club/public/proof-of-work/67932c6058b7970064e25ffc",
   },
   {
     slug: "growthx-engagement-retention",
@@ -362,6 +420,7 @@ export const PROJECTS: Project[] = [
     tags: ["Retention"],
     oneLiner: "Engagement and retention loops designed for a consumer product cohort.",
     image: "/images/projects/growthx-engagement-retention.jpg",
+    externalUrl: "https://community.growthx.club/public/proof-of-work/679e1b92489bcb1b68062e73",
   },
   {
     slug: "ozonetel-acw",
@@ -409,7 +468,7 @@ export const PROJECTS: Project[] = [
     stage: "integrate",
     categories: ["B2B"],
     tags: ["CLM", "Integrations"],
-    oneLiner: "Owning SpotDraft's integrations portfolio as sole PM, contributing ~$290K in ARR.",
+    oneLiner: "Owning SpotDraft's integrations portfolio as sole PM, contributing $200K in ARR.",
     image: "/images/projects/spotdraft-integrations.jpg",
     content: {
       context:
@@ -418,8 +477,7 @@ export const PROJECTS: Project[] = [
         "Without a broad, reliable integration surface, SpotDraft risked losing enterprise deals to competitors who could plug into an existing stack.",
       process:
         "Owned the full integrations portfolio as Integrations PM: 80+ out-of-the-box connectors across CRM, P2P, HRIS, and cloud storage (Google Drive, SharePoint, Dropbox, Box, Egnyte, OneDrive), syncing 50K+ documents. Ran 100+ customer scoping calls with sales, procurement, security, and legal GC/CLO stakeholders across NAM, EU, and APAC.",
-      outcome:
-        "100% attach rate across roughly 800 customers, contributing ~$290K in integration ARR: $170K through API access at $2K/year across 85 accounts, and $120K through 15 custom builds.",
+      outcome: "100+ customer scoping calls enabled $200K in integration ARR.",
     },
   },
   {

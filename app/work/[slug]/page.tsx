@@ -5,6 +5,9 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { PROJECTS, getProjectBySlug, getStageMeta } from "@/lib/projects";
 import { CategoryTag, PlainTag } from "@/components/ui/Tag";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { PdfViewer } from "@/components/work/PdfViewer";
+import { WebEmbed } from "@/components/work/WebEmbed";
+import { ScreenshotGrid } from "@/components/work/ScreenshotGrid";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.slug }));
@@ -108,7 +111,7 @@ export default async function ProjectPage(props: PageProps<"/work/[slug]">) {
         <div className="mt-16 aspect-video w-full rounded-2xl border border-border bg-gradient-to-br from-amber-500/15 via-orange-500/5 to-transparent" />
       )}
 
-      {sections.length > 0 ? (
+      {sections.length > 0 && (
         <div className="mt-16 space-y-12">
           {sections.map((section, i) => (
             <ScrollReveal key={section.label} delay={i * 0.05}>
@@ -119,7 +122,35 @@ export default async function ProjectPage(props: PageProps<"/work/[slug]">) {
             </ScrollReveal>
           ))}
         </div>
-      ) : (
+      )}
+
+      {project.pdfUrl && (
+        <ScrollReveal>
+          <div className="mt-16">
+            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-text-faint">
+              Full Document
+            </h2>
+            <div className="mt-4">
+              <PdfViewer src={project.pdfUrl} title={project.title} />
+            </div>
+          </div>
+        </ScrollReveal>
+      )}
+
+      {project.externalUrl && !project.pdfUrl && (
+        <ScrollReveal>
+          <div className="mt-16">
+            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-text-faint">
+              Full Analysis
+            </h2>
+            <div className="mt-4">
+              <WebEmbed src={project.externalUrl} title={project.title} />
+            </div>
+          </div>
+        </ScrollReveal>
+      )}
+
+      {sections.length === 0 && !project.pdfUrl && !project.externalUrl && (
         <ScrollReveal>
           <div className="mt-16 rounded-2xl border border-dashed border-border p-8 text-center">
             <p className="text-sm text-text-muted">
@@ -130,49 +161,23 @@ export default async function ProjectPage(props: PageProps<"/work/[slug]">) {
         </ScrollReveal>
       )}
 
+      {project.screens && project.screens.length > 0 && (
+        <ScrollReveal>
+          <ScreenshotGrid
+            title="Live Screens"
+            subtitle="The real product, not mockups. Click through to see it live."
+            items={project.screens}
+          />
+        </ScrollReveal>
+      )}
+
       {project.clients && project.clients.length > 0 && (
         <ScrollReveal>
-          <div className="mt-16">
-            <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-text-faint">
-              Selected Clients
-            </h2>
-            <p className="mt-3 text-sm text-text-muted">
-              Live client sites, not mockups. Click through to see the real thing.
-            </p>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              {project.clients.map((client) => (
-                <a
-                  key={client.name}
-                  href={client.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group block overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-accent/40"
-                >
-                  <div className="flex items-center gap-1.5 border-b border-border bg-surface-hover px-3 py-2">
-                    <span className="h-2 w-2 rounded-full bg-text-faint/40" />
-                    <span className="h-2 w-2 rounded-full bg-text-faint/40" />
-                    <span className="h-2 w-2 rounded-full bg-text-faint/40" />
-                  </div>
-                  <div className="relative aspect-video w-full overflow-hidden">
-                    <Image
-                      src={client.image}
-                      alt={`${client.name} website`}
-                      fill
-                      sizes="(min-width: 640px) 380px, 90vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex items-center justify-between px-4 py-3">
-                    <p className="text-sm font-medium text-text">{client.name}</p>
-                    <ArrowUpRight
-                      size={14}
-                      className="text-text-faint transition-colors group-hover:text-accent"
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
+          <ScreenshotGrid
+            title="Selected Clients"
+            subtitle="Live client sites, not mockups. Click through to see the real thing."
+            items={project.clients}
+          />
         </ScrollReveal>
       )}
     </article>

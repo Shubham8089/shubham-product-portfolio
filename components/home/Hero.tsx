@@ -26,7 +26,7 @@ const BRANDS: Brand[] = [
 
 const PROOF_CARDS = [
   {
-    value: "$290K",
+    value: "$200K",
     label: "Integration ARR",
     className: "right-4 top-2 rotate-[-6deg]",
   },

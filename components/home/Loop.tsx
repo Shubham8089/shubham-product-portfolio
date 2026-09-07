@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, ChevronRight, Compass, Hammer, Link2, Search, TrendingUp } from "lucide-react";
+import { ChevronRight, Compass, Hammer, Link2, Search, TrendingUp } from "lucide-react";
 import { STAGES, getProjectsByStage, type LoopStage } from "@/lib/projects";
 
 const STAGE_ICONS: Record<LoopStage, typeof Search> = {
@@ -170,16 +169,6 @@ export function Loop() {
                   </li>
                 ))}
               </ul>
-            )}
-            {activeStage && (
-              <Link
-                href={`#${activeStage.id}`}
-                onClick={() => (userInteractedRef.current = true)}
-                className="mt-3 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-accent transition-opacity hover:opacity-70"
-              >
-                View {activeStage.label}
-                <ArrowRight size={11} />
-              </Link>
             )}
           </motion.div>
         </div>

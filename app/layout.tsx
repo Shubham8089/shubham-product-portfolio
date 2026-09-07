@@ -16,10 +16,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "Shubham Bhosale | Product Manager | B2B SaaS";
+const DESCRIPTION =
+  "Product Manager focused on adoption, activation, and integration-led growth across B2B SaaS.";
+
 export const metadata: Metadata = {
-  title: "Shubham Bhosale, Product Manager",
-  description:
-    "Product Manager focused on adoption, activation, and integration-led growth across B2B SaaS.",
+  metadataBase: new URL("https://bhosalepatil.vercel.app"),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    siteName: TITLE,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

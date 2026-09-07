@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Download, ExternalLink, GitBranch, Mail } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { CONTACT } from "@/lib/contact";
@@ -35,7 +36,16 @@ export function About() {
       <div className="mx-auto grid max-w-[1200px] gap-16 px-6 lg:grid-cols-[1fr_1.3fr]">
         <ScrollReveal>
           <div>
-            <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-amber-500/30 via-orange-500/15 to-transparent" />
+            <div className="relative h-28 w-28 overflow-hidden rounded-2xl">
+              <Image
+                src="/images/about-photo.jpg"
+                alt="Shubham Bhosale"
+                fill
+                sizes="112px"
+                className="object-cover"
+                priority
+              />
+            </div>
             <h2 className="mt-8 text-3xl font-bold tracking-tight text-text">About</h2>
             <p className="mt-4 max-w-sm text-base leading-relaxed text-text-muted">
               Product Manager with 3+ years driving product-led growth across B2B SaaS (CCaaS,
