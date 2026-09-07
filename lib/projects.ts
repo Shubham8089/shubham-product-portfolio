@@ -106,6 +106,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2C"],
     tags: ["Design"],
     oneLiner: "Breaking down Canva's onboarding and template-led activation loop.",
+    image: "/images/projects/canva-teardown.png",
   },
   {
     slug: "spotify-revenue-streams",
@@ -199,6 +200,7 @@ export const PROJECTS: Project[] = [
     tags: ["DPDP", "Compliance"],
     oneLiner: "A production DPDP compliance platform: consent, trust center, DSAR, and vendor risk.",
     liveUrl: "https://dpdp-prod.vercel.app",
+    image: "/images/projects/sentinel.png",
     content: {
       context:
         "India's DPDP Act introduced new obligations for consent management, data subject requests, and vendor risk that most SaaS companies have no tooling for.",
@@ -385,6 +387,7 @@ export const PROJECTS: Project[] = [
     categories: ["B2B"],
     tags: ["CLM", "Integrations"],
     oneLiner: "Owning SpotDraft's integrations portfolio as sole PM, contributing ~$290K in ARR.",
+    image: "/images/projects/spotdraft-integrations.png",
     content: {
       context:
         "SpotDraft is a contract lifecycle management platform where legal, procurement, and security stakeholders expect contracts to sync cleanly with the systems they already run: CRM, P2P, HRIS, and cloud storage.",
