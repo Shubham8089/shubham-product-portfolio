@@ -3,8 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { STAGES, getProjectsByStage } from "@/lib/projects";
+import { ArrowRight, ChevronRight, Compass, Hammer, Link2, Search, TrendingUp } from "lucide-react";
+import { STAGES, getProjectsByStage, type LoopStage } from "@/lib/projects";
+
+const STAGE_ICONS: Record<LoopStage, typeof Search> = {
+  research: Search,
+  strategy: Compass,
+  build: Hammer,
+  growth: TrendingUp,
+  integrate: Link2,
+};
 
 const RADIUS_PCT = 40;
 const TOTAL = STAGES.length;
@@ -177,9 +185,14 @@ export function Loop() {
         </div>
 
         {STAGES.map((stage, i) => {
-          const pos = pointAt(angleFor(i));
-          const count = getProjectsByStage(stage.id).length;
+          const angle = angleFor(i);
+          const pos = pointAt(angle);
+          // The ring is nearly flat right at the top, so a label sitting at a
+          // fixed gap below the node collides with the stroke there. Push it
+          // further away the closer the node is to due north.
+          const labelClearance = Math.max(0, -Math.sin(angle)) * 14;
           const isActive = active === i;
+          const Icon = STAGE_ICONS[stage.id];
           return (
             <motion.div
               key={stage.id}
@@ -202,26 +215,28 @@ export function Loop() {
               >
                 <span
                   aria-hidden
-                  className="absolute h-3.5 w-3.5 rounded-full bg-accent/40"
+                  className="absolute h-10 w-10 rounded-full bg-accent/30"
                   style={{
                     animation: `loop-pulse 2.6s ease-in-out ${i * 0.4}s infinite`,
                   }}
                 />
                 <span
-                  className={`relative flex h-3.5 w-3.5 items-center justify-center rounded-full border transition-all duration-300 ${
+                  className={`relative flex h-10 w-10 items-center justify-center rounded-full border bg-bg transition-all duration-300 ${
                     isActive
-                      ? "scale-150 border-accent bg-accent shadow-[0_0_16px_var(--accent-glow)]"
-                      : "border-border-strong bg-surface group-hover:border-accent"
+                      ? "scale-110 border-accent bg-accent text-black shadow-[0_0_20px_var(--accent-glow)]"
+                      : "border-border-strong text-text-muted group-hover:border-accent group-hover:text-accent"
                   }`}
-                />
+                >
+                  <Icon size={16} strokeWidth={isActive ? 2.3 : 1.7} />
+                </span>
                 <span
+                  style={{ marginTop: labelClearance }}
                   className={`font-mono text-[11px] uppercase tracking-wider transition-colors duration-300 whitespace-nowrap ${
                     isActive ? "text-accent" : "text-text-muted group-hover:text-text"
                   }`}
                 >
                   {stage.label}
                 </span>
-                <span className="font-mono text-[9px] text-text-faint">{count}</span>
               </button>
             </motion.div>
           );

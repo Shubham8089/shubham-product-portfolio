@@ -161,7 +161,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="absolute bottom-44 w-full max-w-[640px] overflow-hidden sm:bottom-40 [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+        className="relative mt-14 w-full max-w-[640px] overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] lg:absolute lg:bottom-40 lg:mt-0"
       >
         <div className="flex w-max animate-marquee items-center gap-12">
           {[...BRANDS, ...BRANDS].map((brand, i) =>
@@ -191,7 +191,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.8 }}
-        className="absolute bottom-28 flex flex-col items-center gap-1.5 text-text-faint transition-colors hover:text-text-muted sm:bottom-24"
+        className="relative mt-8 flex flex-col items-center gap-1.5 text-text-faint transition-colors hover:text-text-muted lg:absolute lg:bottom-24 lg:mt-0"
         aria-label="Scroll to explore"
       >
         <span className="font-mono text-[10px] uppercase tracking-widest">Scroll</span>

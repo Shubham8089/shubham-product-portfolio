@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.4), ease: [0.22, 1, 0.36, 1] }}
-      className="group w-[300px] shrink-0 snap-start sm:w-[340px]"
+      className="group w-[240px] shrink-0 snap-start sm:w-[300px] lg:w-[340px]"
     >
       <Link
         href={href}
@@ -74,8 +74,8 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             </div>
           )}
         </div>
-        <div className="p-5">
-          <div className="mb-3 flex flex-wrap gap-1.5">
+        <div className="p-3 sm:p-4 lg:p-5">
+          <div className="mb-2 flex flex-wrap gap-1.5 sm:mb-3">
             {project.categories.map((c) => (
               <CategoryTag key={c} category={c} />
             ))}
@@ -84,13 +84,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             ))}
           </div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-base font-semibold leading-snug text-text">{project.title}</h3>
+            <h3 className="line-clamp-1 text-sm font-semibold leading-snug text-text sm:text-base">
+              {project.title}
+            </h3>
             <ArrowUpRight
               size={16}
               className="mt-0.5 shrink-0 text-text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
             />
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-text-muted">{project.oneLiner}</p>
+          <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-text-muted sm:mt-2 sm:text-sm">
+            {project.oneLiner}
+          </p>
         </div>
       </Link>
     </motion.div>

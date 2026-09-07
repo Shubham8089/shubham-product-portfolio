@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { Intro } from "@/components/home/Intro";
 import { Loop } from "@/components/home/Loop";
 import { SkillSection } from "@/components/home/SkillSection";
 import { Startups } from "@/components/home/Startups";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Intro />
       <section id="loop">
         <Loop />
       </section>

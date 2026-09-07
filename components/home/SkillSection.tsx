@@ -8,6 +8,8 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { ProjectCard } from "@/components/home/ProjectCard";
 
 const EDGE_PAD = "max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem))";
+const SIDEBAR_WIDTH = 88;
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 export function SkillSection({ stage }: { stage: LoopStage }) {
   const meta = getStageMeta(stage);
@@ -18,14 +20,23 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
   const [distance, setDistance] = useState(0);
 
   useLayoutEffect(() => {
+    const mql = window.matchMedia(DESKTOP_QUERY);
+
     function measure() {
       if (!trackRef.current) return;
-      const overflow = trackRef.current.scrollWidth - window.innerWidth;
+      const desktop = mql.matches;
+      const viewportWidth = window.innerWidth - (desktop ? SIDEBAR_WIDTH : 0);
+      const overflow = trackRef.current.scrollWidth - viewportWidth;
       setDistance(Math.max(overflow, 0));
     }
+
     measure();
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    mql.addEventListener("change", measure);
+    return () => {
+      window.removeEventListener("resize", measure);
+      mql.removeEventListener("change", measure);
+    };
   }, [projects.length]);
 
   const { scrollYProgress } = useScroll({
@@ -52,8 +63,8 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
       <div
         className={
           pinned
-            ? "sticky flex h-[calc(100svh-var(--header-h))] flex-col overflow-hidden py-12"
-            : "flex flex-col py-24 sm:py-32"
+            ? "sticky flex h-[calc(100svh-var(--header-h))] flex-col overflow-hidden py-5 sm:py-8 lg:py-12"
+            : "flex flex-col py-16 sm:py-24 lg:py-32"
         }
         style={pinned ? { top: "var(--header-h)" } : undefined}
       >
@@ -65,7 +76,7 @@ export function SkillSection({ stage }: { stage: LoopStage }) {
             description={meta.blurb}
           />
           {pinned && (
-            <div className="-mt-8 mb-10 h-px w-full max-w-[200px] bg-border">
+            <div className="-mt-4 mb-4 h-px w-full max-w-[200px] bg-border sm:-mt-6 sm:mb-6 lg:-mt-8 lg:mb-10">
               <motion.div className="h-px bg-accent" style={{ width: progressWidth }} />
             </div>
           )}
